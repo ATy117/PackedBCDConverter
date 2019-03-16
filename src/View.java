@@ -1,3 +1,4 @@
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,11 +20,13 @@ public class View {
     @FXML public JFXTextField ecbField;
     @FXML public JFXTextField mcbFieldOne;
     @FXML public JFXTextField mcbFieldTwo;
-
+    @FXML public JFXButton generateBtn;
 
     public Stage stage;
-    public View(Stage primaryStage){
+    public Controller controller;
+    public View(Stage primaryStage, Controller controller){
         this.stage = primaryStage;
+        this.controller = controller;
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("viewTemplate.fxml"));
         loader.setController(this);
@@ -50,6 +53,10 @@ public class View {
         mcbFieldTwo.setEditable(false);
         ecbField.setEditable(false);
 
+    }
+
+    public void generate(){
+        controller.input(inputTextField.getText());
     }
 
 }

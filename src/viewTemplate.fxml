@@ -94,7 +94,7 @@
                 </JFXTextField>
             </children>
         </AnchorPane>
-        <JFXButton fx:id="generateBtn" layoutX="426.0" layoutY="217.0" ripplerFill="#131b2e" style="-fx-background-color: #969eb1" text="Generate" textFill="#353e4d">
+        <JFXButton fx:id="generateBtn" onAction="#generate" layoutX="426.0" layoutY="217.0" ripplerFill="#131b2e" style="-fx-background-color: #969eb1" text="Generate" textFill="#353e4d">
             <font>
                 <Font name="Fredoka One" size="16.0" />
             </font>
