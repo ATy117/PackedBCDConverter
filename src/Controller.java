@@ -1,5 +1,8 @@
 import javafx.stage.Stage;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class Controller {
     private Model model;
 
@@ -51,14 +54,20 @@ public class Controller {
         }
 
         System.out.println(temporaryDouble);
-        System.out.println(temporaryExponent);
-
-        if (temporaryExponent > 90){
+        if (temporaryExponent > 90 && temporaryDouble > 0){
             remark = "positiveinfinity";
             process("positiveinfinity", "positiveinfinity", remark);
-        } else if (temporaryExponent < -101){
+        } else if (temporaryExponent < -101 && temporaryDouble < 0){
             remark = "negativeinfinity";
             process("negativeinfinity", "negativeinfinity", remark);
+        } else {
+            remark = "withinrange";
+            BigDecimal bd = new BigDecimal(temporaryDouble);
+            bd = bd.setScale(0, RoundingMode.HALF_EVEN);
+            double finalDouble = bd.doubleValue();
+            int finalInt = (int) finalDouble;
+            System.out.println(finalInt);
+            process(finalInt+ "", temporaryExponent + "", remark);
         }
 
     }
@@ -85,6 +94,67 @@ public class Controller {
             model.setMantissa1("0000000000");
             model.setMantissa2("0000000000");
             model.Notify();
+        } else {
+            int wholeNumber = Integer.parseInt(finalInput);
+            int exponent = Integer.parseInt(finalExponent);
+
+            if (wholeNumber > 0) {
+                model.setSignBit(0);
+            } else {
+                model.setSignBit(1);
+                wholeNumber = wholeNumber * -1;
+            }
+
+            int MSD = wholeNumber / 1000000;
+
+            String MSDbits = FourBitConverter.convert(MSD);
+            String exponentBits = EPrimeConverter.convert(exponent);
+
+            if (MSD < 8){
+                String combi = "";
+                combi = combi + exponentBits.substring(0,2) + MSDbits.substring(1);
+                model.setCombi(combi);
+            } else {
+                String combi = "11";
+                combi = combi + exponentBits.substring(0,2) + MSDbits.substring(3);
+                model.setCombi(combi);
+            }
+
+            model.setExponent(exponentBits.substring(2));
+
+            String finalInput1 = wholeNumber + "";
+            String first = finalInput1.substring(1,2);
+            String second = finalInput1.substring(2,3);
+            String third = finalInput1.substring(3,4);
+
+            String fourth = finalInput1.substring(4,5);
+            String fifth = finalInput1.substring(5,6);
+            String sixth = finalInput1.substring(6,7);
+
+            System.out.println(first + second + third + fourth + fifth + sixth);
+            int[] m1 = DensleyPackedConverter.toDensleyPackedBCD(Integer.parseInt(first),
+                                                                        Integer.parseInt(second),
+                                                                        Integer.parseInt(third));
+
+            int[] m2 = DensleyPackedConverter.toDensleyPackedBCD(Integer.parseInt(fourth),
+                                                                         Integer.parseInt(fifth),
+                                                                         Integer.parseInt(sixth));
+
+            String mantissa1 = "";
+            for (int i: m1){
+                mantissa1= mantissa1.concat(i+"");
+            }
+
+            String mantissa2 = "";
+            for (int i: m2){
+                mantissa2 = mantissa2.concat(i + "");
+            }
+
+
+            model.setMantissa1(mantissa1);
+            model.setMantissa2(mantissa2);
+            model.Notify();
+
         }
 
     }
