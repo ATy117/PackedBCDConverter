@@ -3,10 +3,11 @@ import javafx.stage.Stage;
 public class Controller {
 
     public Controller(Stage primaryStage){
-        View view = new View(primaryStage, this);
+        Model model = new Model();
+        View view = new View(primaryStage, this, model);
     }
 
-    public void input(String input){
-        System.out.println("Input of user: " + input);
+    public void input(String input, String exponent){
+        
     }
 }

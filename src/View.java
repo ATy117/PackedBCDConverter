@@ -4,8 +4,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -24,9 +22,12 @@ public class View {
 
     public Stage stage;
     public Controller controller;
-    public View(Stage primaryStage, Controller controller){
+    private Model model;
+
+    public View(Stage primaryStage, Controller controller, Model model){
         this.stage = primaryStage;
         this.controller = controller;
+        this.model = model;
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("viewTemplate.fxml"));
         loader.setController(this);
@@ -56,7 +57,15 @@ public class View {
     }
 
     public void generate(){
-        controller.input(inputTextField.getText());
+        controller.input(inputTextField.getText(), expTextField.getText());
     }
 
+    public void update() {
+        signField.setText(model.getSignBit()+"");
+        combiField.setText(model.getCombi());
+        ecbField.setText(model.getExponent());
+        mcbFieldOne.setText(model.getMantissa1());
+        mcbFieldTwo.setText(model.getMantissa2());
+
+    }
 }
