@@ -25,28 +25,41 @@ public class Controller {
         }
 
         if (temporaryDouble > 0.0) {
-            if (temporaryDouble > 9999999f) {
-                while (temporaryDouble > 9999999f) {
-                    temporaryDouble = temporaryExponent / 10.0f;
+            if (temporaryDouble > 9999999.9d) {
+                while (temporaryDouble > 9999999d) {
+                    temporaryDouble = temporaryDouble / 10.0d;
                     temporaryExponent++;
                 }
-                System.out.println(temporaryDouble);
-                System.out.println(temporaryExponent);
-            } else if (temporaryDouble < 1000000f) {
-                while (temporaryDouble < 1000000f) {
-                    temporaryDouble = temporaryDouble * 10.0f;
+            } else if (temporaryDouble < 1000000d) {
+                while (temporaryDouble < 1000000d) {
+                    temporaryDouble = temporaryDouble * 10.0d;
                     temporaryExponent--;
                 }
-                System.out.println(temporaryDouble);
-                System.out.println(temporaryExponent);
             }
-        } 
+        } else if (temporaryDouble < 0.0){
+            if (temporaryDouble < -9999999.9d){
+                while (temporaryDouble < -9999999.9d){
+                    temporaryDouble = temporaryDouble / 10.0d;
+                    temporaryExponent++;
+                }
+            } else if (temporaryDouble > -1000000d){
+                while (temporaryDouble > -1000000d){
+                    temporaryDouble = temporaryDouble * 10.0d;
+                    temporaryExponent--;
+                }
+            }
+        }
 
+        System.out.println(temporaryDouble);
+        System.out.println(temporaryExponent);
 
-
-
-
-
+        if (temporaryExponent > 90){
+            remark = "positiveinfinity";
+            process("positiveinfinity", "positiveinfinity", remark);
+        } else if (temporaryExponent < -101){
+            remark = "negativeinfinity";
+            process("negativeinfinity", "negativeinfinity", remark);
+        }
 
     }
 
@@ -54,6 +67,20 @@ public class Controller {
         if (remark.equals("nan")){
             model.setSignBit(0);
             model.setCombi("11111");
+            model.setExponent("010101");
+            model.setMantissa1("0101010101");
+            model.setMantissa2("0101010101");
+            model.Notify();
+        } else if (remark.equals("positiveinfinity")){
+            model.setSignBit(0);
+            model.setCombi("11110");
+            model.setExponent("111111");
+            model.setMantissa1("1111111111");
+            model.setMantissa2("1111111111");
+            model.Notify();
+        } else if (remark.equals("negativeinifinity")){
+            model.setSignBit(1);
+            model.setCombi("11110");
             model.setExponent("000000");
             model.setMantissa1("0000000000");
             model.setMantissa2("0000000000");
