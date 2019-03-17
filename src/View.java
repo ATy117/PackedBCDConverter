@@ -29,6 +29,7 @@ public class View {
         this.controller = controller;
         this.model = model;
 
+        model.attach(this);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("viewTemplate.fxml"));
         loader.setController(this);
 
