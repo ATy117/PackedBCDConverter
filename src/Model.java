@@ -6,6 +6,9 @@ public class Model {
     String mantissa2;
     String finalHex;
 
+    String finalInput;
+    String finalExponent;
+
     View view;
 
     public void attach(View view){
@@ -62,5 +65,21 @@ public class Model {
 
     public void setFinalHex(String finalHex) {
         this.finalHex = finalHex;
+    }
+
+    public String getFinalInput() {
+        return finalInput;
+    }
+
+    public void setFinalInput(String finalInput) {
+        this.finalInput = finalInput;
+    }
+
+    public String getFinalExponent() {
+        return finalExponent;
+    }
+
+    public void setFinalExponent(String finalExponent) {
+        this.finalExponent = finalExponent;
     }
 }

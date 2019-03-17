@@ -6,76 +6,77 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainAnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #b4bbcb" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="mainAnchorPane" prefHeight="475.0" prefWidth="600.0" style="-fx-background-color: #b4bbcb" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <ImageView fx:id="titleImage" fitHeight="95.0" fitWidth="345.0" layoutX="134.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@resources/FloatingPoint.png" />
             </image>
         </ImageView>
-        <Label layoutX="51.0" layoutY="222.0" text="Sign:" textFill="#303030">
+        <Label layoutX="27.0" layoutY="284.0" text="Sign Bit:" textFill="#303030">
             <font>
                 <Font name="Fredoka One" size="21.0" />
             </font>
         </Label>
-        <JFXTextField fx:id="signField" alignment="CENTER" focusColor="#969eb1" layoutX="110.0" layoutY="218.0" prefHeight="25.0" prefWidth="40.0" text="1" unFocusColor="#131b2e">
+        <JFXTextField fx:id="signField" alignment="CENTER" focusColor="#969eb1" layoutX="208.0" layoutY="272.0" prefHeight="25.0" prefWidth="40.0" text="1" unFocusColor="#131b2e">
             <font>
                 <Font name="Fredoka One" size="18.0" />
             </font>
         </JFXTextField>
-        <Label layoutX="31.0" layoutY="270.0" text="Combi:" textFill="#303030">
+        <Label layoutX="32.0" layoutY="331.0" text="Combi:" textFill="#303030">
             <font>
                 <Font name="Fredoka One" size="21.0" />
             </font>
         </Label>
-        <JFXTextField fx:id="combiField" alignment="CENTER" focusColor="#969eb1" layoutX="111.0" layoutY="259.0" prefHeight="35.0" prefWidth="86.0" text="12345" unFocusColor="#131b2e">
+        <JFXTextField fx:id="combiField" alignment="CENTER" focusColor="#969eb1" layoutX="185.0" layoutY="315.0" prefHeight="35.0" prefWidth="86.0" text="12345" unFocusColor="#131b2e">
             <font>
                 <Font name="Fredoka One" size="18.0" />
             </font>
         </JFXTextField>
-        <Label layoutX="52.0" layoutY="315.0" text="ECB:" textFill="#303030">
+        <Label layoutX="44.0" layoutY="375.0" text="ECB:" textFill="#303030">
             <font>
                 <Font name="Fredoka One" size="21.0" />
             </font>
         </Label>
-        <JFXTextField fx:id="ecbField" alignment="CENTER" focusColor="#969eb1" layoutX="111.0" layoutY="304.0" prefHeight="35.0" prefWidth="86.0" text="123456" unFocusColor="#131b2e">
+        <JFXTextField fx:id="ecbField" alignment="CENTER" focusColor="#969eb1" layoutX="185.0" layoutY="362.0" prefHeight="35.0" prefWidth="86.0" text="123456" unFocusColor="#131b2e">
             <font>
                 <Font name="Fredoka One" size="18.0" />
             </font>
         </JFXTextField>
-        <Label layoutX="47.0" layoutY="355.0" text="MCB:" textFill="#303030">
+        <Label layoutX="40.0" layoutY="416.0" text="MCB:" textFill="#303030">
             <font>
                 <Font name="Fredoka One" size="21.0" />
             </font>
         </Label>
-        <ImageView fx:id="rectangleImage" fitHeight="150.0" fitWidth="200.0" layoutX="379.0" layoutY="265.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="rectangleImage" fitHeight="150.0" fitWidth="200.0" layoutX="379.0" layoutY="364.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@resources/rectangle.png" />
             </image>
         </ImageView>
-        <JFXTextField fx:id="mcbFieldOne" alignment="CENTER" focusColor="#969eb1" layoutX="112.0" layoutY="344.0" prefHeight="35.0" prefWidth="125.0" text="123 456 1234" unFocusColor="#131b2e">
+        <JFXTextField fx:id="mcbFieldOne" alignment="CENTER" focusColor="#969eb1" layoutX="103.0" layoutY="408.0" prefHeight="35.0" prefWidth="125.0" text="123 456 1234" unFocusColor="#131b2e">
             <font>
                 <Font name="Fredoka One" size="18.0" />
             </font>
         </JFXTextField>
-        <JFXTextField fx:id="mcbFieldTwo" alignment="CENTER" focusColor="#969eb1" layoutX="245.0" layoutY="344.0" prefHeight="35.0" prefWidth="125.0" text="123 456 1234" unFocusColor="#131b2e">
+        <JFXTextField fx:id="mcbFieldTwo" alignment="CENTER" focusColor="#969eb1" layoutX="238.0" layoutY="408.0" prefHeight="35.0" prefWidth="125.0" text="123 456 1234" unFocusColor="#131b2e">
             <font>
                 <Font name="Fredoka One" size="18.0" />
             </font>
         </JFXTextField>
-        <Label layoutX="407.0" layoutY="276.0" text="Final Hex:" textFill="#cfd3da">
+        <Label layoutX="435.0" layoutY="375.0" text="Final Hex:" textFill="#cfd3da">
             <font>
                 <Font name="Fredoka One" size="21.0" />
             </font>
         </Label>
-        <Label fx:id="finalHexLabel" layoutX="407.0" layoutY="308.0" text="0x12345678" textFill="#cfd3da">
+        <Label fx:id="finalHexLabel" layoutX="410.0" layoutY="409.0" text="0x12345678" textFill="#cfd3da">
             <font>
                 <Font name="Fredoka One" size="26.0" />
             </font>
         </Label>
-        <AnchorPane fx:id="inputAnchorPane" layoutX="117.0" layoutY="120.0" prefHeight="80.0" prefWidth="379.0" style="-fx-background-color: #b4bbc1">
+        <AnchorPane fx:id="inputAnchorPane" layoutX="117.0" layoutY="111.0" prefHeight="80.0" prefWidth="379.0" style="-fx-background-color: #b4bbc1">
             <children>
                 <JFXTextField fx:id="inputTextField" focusColor="#969eb1" layoutX="46.0" layoutY="36.0" prefHeight="35.0" prefWidth="152.0" promptText="Input" unFocusColor="#353e4d">
                     <font>
@@ -94,10 +95,25 @@
                 </JFXTextField>
             </children>
         </AnchorPane>
-        <JFXButton fx:id="generateBtn" onAction="#generate" layoutX="426.0" layoutY="217.0" ripplerFill="#131b2e" style="-fx-background-color: #969eb1" text="Generate" textFill="#353e4d">
+        <JFXButton fx:id="generateBtn" layoutX="436.0" layoutY="313.0" onAction="#generate" ripplerFill="#131b2e" style="-fx-background-color: #969eb1" text="Generate" textFill="#353e4d">
             <font>
                 <Font name="Fredoka One" size="16.0" />
             </font>
         </JFXButton>
+      <AnchorPane layoutX="11.0" layoutY="198.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2f4254" height="66.0" stroke="BLACK" strokeType="INSIDE" width="578.0" />
+         </children>
+      </AnchorPane>
+      <Label layoutX="271.0" layoutY="198.0" text="Remarks:" textFill="#cfd3da">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="remarksLabel" layoutX="23.0" layoutY="219.0" prefHeight="38.0" prefWidth="553.0" text="No Input Yet" textAlignment="CENTER" textFill="#cfd3da" AnchorPane.bottomAnchor="218.0" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="219.0">
+         <font>
+            <Font name="Fredoka One" size="26.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

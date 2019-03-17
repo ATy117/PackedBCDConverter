@@ -21,6 +21,7 @@ public class View {
     @FXML public JFXTextField mcbFieldTwo;
     @FXML public JFXButton generateBtn;
     @FXML public Label finalHexLabel;
+    @FXML public Label remarksLabel;
 
     public Stage stage;
     public Controller controller;
@@ -70,5 +71,15 @@ public class View {
         mcbFieldOne.setText(model.getMantissa1());
         mcbFieldTwo.setText(model.getMantissa2());
         finalHexLabel.setText("0x" + model.getFinalHex());
+
+        if (model.getCombi().equals("11110") && model.getSignBit() == 1){
+            remarksLabel.setText("Number Considered Negative Infinity");
+        } else if (model.getCombi().equals("11110") && model.getSignBit() == 0) {
+            remarksLabel.setText("Number Considered Positive Infinity");
+        } else if (model.getCombi().equals("11111")){
+            remarksLabel.setText("Not a Number (NaN)");
+        } else {
+            remarksLabel.setText("Adjusted Input: " + model.getFinalInput() + " Adjusted Exp: " + model.getFinalExponent());
+        }
     }
 }

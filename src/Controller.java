@@ -116,6 +116,9 @@ public class Controller {
             model.setFinalHex(finalHex.toUpperCase());
             model.Notify();
         } else {
+            model.setFinalInput(finalInput);
+            model.setFinalExponent(finalExponent);
+
             int wholeNumber = Integer.parseInt(finalInput);
             int exponent = Integer.parseInt(finalExponent);
 
