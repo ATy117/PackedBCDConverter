@@ -25,7 +25,7 @@ public class Controller {
         }
 
         if (temporaryDouble > 0.0) {
-            if (temporaryDouble > 9999999.9d) {
+            if (temporaryDouble > 9999999d) {
                 while (temporaryDouble > 9999999d) {
                     temporaryDouble = temporaryDouble / 10.0d;
                     temporaryExponent++;
@@ -37,15 +37,15 @@ public class Controller {
                 }
             }
         } else if (temporaryDouble < 0.0){
-            if (temporaryDouble < -9999999.9d){
-                while (temporaryDouble < -9999999.9d){
+            if (temporaryDouble < -9999999d){
+                while (temporaryDouble < -9999999d){
                     temporaryDouble = temporaryDouble / 10.0d;
-                    temporaryExponent++;
+                    temporaryExponent--;
                 }
             } else if (temporaryDouble > -1000000d){
                 while (temporaryDouble > -1000000d){
                     temporaryDouble = temporaryDouble * 10.0d;
-                    temporaryExponent--;
+                    temporaryExponent++;
                 }
             }
         }
@@ -78,7 +78,7 @@ public class Controller {
             model.setMantissa1("1111111111");
             model.setMantissa2("1111111111");
             model.Notify();
-        } else if (remark.equals("negativeinifinity")){
+        } else if (remark.equals("negativeinfinity")){
             model.setSignBit(1);
             model.setCombi("11110");
             model.setExponent("000000");
