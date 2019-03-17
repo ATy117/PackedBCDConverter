@@ -79,6 +79,13 @@ public class Controller {
             model.setExponent("010101");
             model.setMantissa1("0101010101");
             model.setMantissa2("0101010101");
+            String finalHex = Hex32Converter.convert(model.getSignBit() +
+                    model.getCombi() +
+                    model.getExponent() +
+                    model.getMantissa1() +
+                    model.getMantissa2());
+
+            model.setFinalHex(finalHex.toUpperCase());
             model.Notify();
         } else if (remark.equals("positiveinfinity")){
             model.setSignBit(0);
@@ -86,6 +93,13 @@ public class Controller {
             model.setExponent("111111");
             model.setMantissa1("1111111111");
             model.setMantissa2("1111111111");
+            String finalHex = Hex32Converter.convert(model.getSignBit() +
+                    model.getCombi() +
+                    model.getExponent() +
+                    model.getMantissa1() +
+                    model.getMantissa2());
+
+            model.setFinalHex(finalHex.toUpperCase());
             model.Notify();
         } else if (remark.equals("negativeinfinity")){
             model.setSignBit(1);
@@ -93,6 +107,13 @@ public class Controller {
             model.setExponent("000000");
             model.setMantissa1("0000000000");
             model.setMantissa2("0000000000");
+            String finalHex = Hex32Converter.convert(model.getSignBit() +
+                    model.getCombi() +
+                    model.getExponent() +
+                    model.getMantissa1() +
+                    model.getMantissa2());
+
+            model.setFinalHex(finalHex.toUpperCase());
             model.Notify();
         } else {
             int wholeNumber = Integer.parseInt(finalInput);
@@ -153,6 +174,14 @@ public class Controller {
 
             model.setMantissa1(mantissa1);
             model.setMantissa2(mantissa2);
+
+            String finalHex = Hex32Converter.convert(model.getSignBit() +
+                                                                 model.getCombi() +
+                                                                 model.getExponent() +
+                                                                 model.getMantissa1() +
+                                                                 model.getMantissa2());
+
+            model.setFinalHex(finalHex.toUpperCase());
             model.Notify();
 
         }

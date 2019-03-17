@@ -4,6 +4,7 @@ public class Model {
     String exponent;
     String mantissa1;
     String mantissa2;
+    String finalHex;
 
     View view;
 
@@ -53,5 +54,13 @@ public class Model {
 
     public void setMantissa2(String mantissa2) {
         this.mantissa2 = mantissa2;
+    }
+
+    public String getFinalHex() {
+        return finalHex;
+    }
+
+    public void setFinalHex(String finalHex) {
+        this.finalHex = finalHex;
     }
 }

@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -19,6 +20,7 @@ public class View {
     @FXML public JFXTextField mcbFieldOne;
     @FXML public JFXTextField mcbFieldTwo;
     @FXML public JFXButton generateBtn;
+    @FXML public Label finalHexLabel;
 
     public Stage stage;
     public Controller controller;
@@ -67,6 +69,6 @@ public class View {
         ecbField.setText(model.getExponent());
         mcbFieldOne.setText(model.getMantissa1());
         mcbFieldTwo.setText(model.getMantissa2());
-
+        finalHexLabel.setText("0x" + model.getFinalHex());
     }
 }
