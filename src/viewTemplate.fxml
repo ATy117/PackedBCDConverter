@@ -6,7 +6,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="mainAnchorPane" prefHeight="475.0" prefWidth="600.0" style="-fx-background-color: #b4bbcb" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
@@ -100,14 +99,15 @@
                 <Font name="Fredoka One" size="16.0" />
             </font>
         </JFXButton>
-      <AnchorPane layoutX="11.0" layoutY="198.0">
-         <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2f4254" height="66.0" stroke="BLACK" strokeType="INSIDE" width="578.0" />
-         </children>
-      </AnchorPane>
+      <AnchorPane layoutX="11.0" layoutY="198.0" />
+      <ImageView fitHeight="80.0" fitWidth="589.0" layoutX="6.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@resources/rectangle2.png" />
+         </image>
+      </ImageView>
       <Label layoutX="271.0" layoutY="198.0" text="Remarks:" textFill="#cfd3da">
          <font>
-            <Font size="15.0" />
+            <Font name="Fredoka One" size="15.0" />
          </font>
       </Label>
       <Label fx:id="remarksLabel" layoutX="23.0" layoutY="219.0" prefHeight="38.0" prefWidth="553.0" text="No Input Yet" textAlignment="CENTER" textFill="#cfd3da" AnchorPane.bottomAnchor="218.0" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="219.0">
