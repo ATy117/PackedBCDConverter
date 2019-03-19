@@ -22,7 +22,6 @@ public class Controller {
             temporaryExponent = Integer.parseInt(exponent);
         }catch (NumberFormatException e){
             remark = "nan";
-            System.out.println(remark);
             process("nan", "nan", remark);
             return;
         }
@@ -53,7 +52,6 @@ public class Controller {
             }
         }
 
-        System.out.println(temporaryDouble);
         if (temporaryExponent > 90 && temporaryDouble > 0){
             remark = "positiveinfinity";
             process("positiveinfinity", "positiveinfinity", remark);
@@ -66,7 +64,6 @@ public class Controller {
             bd = bd.setScale(0, RoundingMode.HALF_EVEN);
             double finalDouble = bd.doubleValue();
             int finalInt = (int) finalDouble;
-            System.out.println(finalInt);
             process(finalInt+ "", temporaryExponent + "", remark);
         }
 
@@ -155,7 +152,6 @@ public class Controller {
             String fifth = finalInput1.substring(5,6);
             String sixth = finalInput1.substring(6,7);
 
-            System.out.println(first + second + third + fourth + fifth + sixth);
             int[] m1 = DensleyPackedConverter.toDensleyPackedBCD(Integer.parseInt(first),
                                                                         Integer.parseInt(second),
                                                                         Integer.parseInt(third));
