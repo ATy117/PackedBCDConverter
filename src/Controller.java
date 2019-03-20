@@ -25,7 +25,10 @@ public class Controller {
             process("nan", "nan", remark);
             return;
         }
-
+        if(temporaryDouble == 0.0d){
+            remark = "withinrange";
+            process("0000000", temporaryExponent + "", remark);
+        }
         if (temporaryDouble > 0.0) {
             if (temporaryDouble > 9999999d) {
                 while (temporaryDouble > 9999999d) {
@@ -144,6 +147,9 @@ public class Controller {
             model.setExponent(exponentBits.substring(2));
 
             String finalInput1 = wholeNumber + "";
+            if(wholeNumber == 0){
+                finalInput1 = "0000000";
+            }
             String first = finalInput1.substring(1,2);
             String second = finalInput1.substring(2,3);
             String third = finalInput1.substring(3,4);
