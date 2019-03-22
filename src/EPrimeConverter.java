@@ -1,7 +1,7 @@
 public class EPrimeConverter {
-    public static String convert(int exponent){
+    public static String convert(int exponent, int number){
         String tenBit = "";
-        if (exponent < -101 || exponent > 90){
+        if (exponent < -101 || exponent > 90 || number == 0){
             return "00000000";
         }
         int prime = exponent + 101;
