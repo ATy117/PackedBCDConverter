@@ -30,7 +30,7 @@
                 <Font name="Fredoka One" size="21.0" />
             </font>
         </Label>
-        <JFXTextField fx:id="combiField" alignment="CENTER" focusColor="#969eb1" layoutX="185.0" layoutY="315.0" prefHeight="35.0" prefWidth="86.0" text="12345" unFocusColor="#131b2e">
+        <JFXTextField fx:id="combiField" alignment="CENTER" focusColor="#969eb1" layoutX="185.0" layoutY="315.0" prefHeight="35.0" prefWidth="86.0" text="00000" unFocusColor="#131b2e">
             <font>
                 <Font name="Fredoka One" size="18.0" />
             </font>
@@ -40,7 +40,7 @@
                 <Font name="Fredoka One" size="21.0" />
             </font>
         </Label>
-        <JFXTextField fx:id="ecbField" alignment="CENTER" focusColor="#969eb1" layoutX="185.0" layoutY="362.0" prefHeight="35.0" prefWidth="86.0" text="123456" unFocusColor="#131b2e">
+        <JFXTextField fx:id="ecbField" alignment="CENTER" focusColor="#969eb1" layoutX="185.0" layoutY="362.0" prefHeight="35.0" prefWidth="86.0" text="00000" unFocusColor="#131b2e">
             <font>
                 <Font name="Fredoka One" size="18.0" />
             </font>
@@ -55,12 +55,12 @@
                 <Image url="@resources/rectangle.png" />
             </image>
         </ImageView>
-        <JFXTextField fx:id="mcbFieldOne" alignment="CENTER" focusColor="#969eb1" layoutX="103.0" layoutY="408.0" prefHeight="35.0" prefWidth="125.0" text="123 456 1234" unFocusColor="#131b2e">
+        <JFXTextField fx:id="mcbFieldOne" alignment="CENTER" focusColor="#969eb1" layoutX="103.0" layoutY="408.0" prefHeight="35.0" prefWidth="125.0" text="000 000 0000" unFocusColor="#131b2e">
             <font>
                 <Font name="Fredoka One" size="18.0" />
             </font>
         </JFXTextField>
-        <JFXTextField fx:id="mcbFieldTwo" alignment="CENTER" focusColor="#969eb1" layoutX="238.0" layoutY="408.0" prefHeight="35.0" prefWidth="125.0" text="123 456 1234" unFocusColor="#131b2e">
+        <JFXTextField fx:id="mcbFieldTwo" alignment="CENTER" focusColor="#969eb1" layoutX="238.0" layoutY="408.0" prefHeight="35.0" prefWidth="125.0" text="000 000 0000" unFocusColor="#131b2e">
             <font>
                 <Font name="Fredoka One" size="18.0" />
             </font>
@@ -70,7 +70,7 @@
                 <Font name="Fredoka One" size="21.0" />
             </font>
         </Label>
-        <Label fx:id="finalHexLabel" layoutX="410.0" layoutY="409.0" text="0x12345678" textFill="#cfd3da">
+        <Label fx:id="finalHexLabel" layoutX="410.0" layoutY="409.0" text="0x00000000" textFill="#cfd3da">
             <font>
                 <Font name="Fredoka One" size="26.0" />
             </font>
