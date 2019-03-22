@@ -61,12 +61,16 @@ public class Controller {
                 temporaryDouble = temporaryDouble / 10.0d;
                 temporaryExponent++;
             }
-        } else if (temporaryDouble > 9999999d){
+        }
+
+        if (temporaryDouble > 9999999d){
             while (temporaryDouble > 9999999d) {
                 temporaryDouble = temporaryDouble / 10.0d;
                 temporaryExponent++;
             }
-        } else if (temporaryDouble < -9999999d){
+        }
+
+        if (temporaryDouble < -9999999d){
             while (temporaryDouble < -9999999d){
                 temporaryDouble = temporaryDouble / 10.0d;
                 temporaryExponent++;
