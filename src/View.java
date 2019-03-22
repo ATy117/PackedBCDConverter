@@ -5,7 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -13,14 +15,14 @@ import java.io.IOException;
 
 public class View {
     @FXML public AnchorPane mainAnchorPane;
-    @FXML public JFXTextField inputTextField;
-    @FXML public JFXTextField expTextField;
-    @FXML public JFXTextField signField;
-    @FXML public JFXTextField combiField;
-    @FXML public JFXTextField ecbField;
-    @FXML public JFXTextField mcbFieldOne;
-    @FXML public JFXTextField mcbFieldTwo;
-    @FXML public JFXButton generateBtn;
+    @FXML public TextField inputTextField;
+    @FXML public TextField expTextField;
+    @FXML public Label signField;
+    @FXML public Label combiField;
+    @FXML public Label ecbField;
+    @FXML public Label mcbFieldOne;
+    @FXML public Label mcbFieldTwo;
+    @FXML public Button generateBtn;
     @FXML public Label finalHexLabel;
     @FXML public Label remarksLabel;
 
@@ -54,12 +56,6 @@ public class View {
     }
 
     private void init(){
-
-        signField.setEditable(false);
-        combiField.setEditable(false);
-        mcbFieldOne.setEditable(false);
-        mcbFieldTwo.setEditable(false);
-        ecbField.setEditable(false);
 
         remarksLabel.setMaxWidth(Double.MAX_VALUE);
         remarksLabel.setAlignment(Pos.CENTER);
