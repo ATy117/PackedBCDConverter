@@ -56,6 +56,23 @@ public class Controller {
             }
         }
 
+        if (temporaryExponent < -101){
+            while (temporaryExponent < -101){
+                temporaryDouble = temporaryDouble / 10.0d;
+                temporaryExponent++;
+            }
+        } else if (temporaryDouble > 9999999d){
+            while (temporaryDouble > 9999999d) {
+                temporaryDouble = temporaryDouble / 10.0d;
+                temporaryExponent++;
+            }
+        } else if (temporaryDouble < -9999999d){
+            while (temporaryDouble < -9999999d){
+                temporaryDouble = temporaryDouble / 10.0d;
+                temporaryExponent++;
+            }
+        }
+
         if (temporaryExponent > 90 && temporaryDouble > 0){
             remark = "positiveinfinity";
             process("positiveinfinity", "positiveinfinity", remark);
@@ -66,7 +83,11 @@ public class Controller {
                                                 (temporaryDouble > -1 && temporaryDouble < 0))) {
             remark = "withinrange";
             process("0000000", temporaryExponent + "", remark);
-        } else {
+        } else if (temporaryExponent < -101) {
+            remark = "withinrange";
+            process("0000000", temporaryExponent + "", remark);
+        }
+        else {
             remark = "withinrange";
             BigDecimal bd = new BigDecimal(temporaryDouble);
             bd = bd.setScale(0, RoundingMode.HALF_EVEN);

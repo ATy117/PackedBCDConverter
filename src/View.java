@@ -82,6 +82,8 @@ public class View {
             remarksLabel.setText("Number Considered Positive Infinity");
         } else if (model.getCombi().equals("11111")){
             remarksLabel.setText("Not a Number (NaN)");
+        } else if (model.getFinalInput().equals("0000000")){
+            remarksLabel.setText("Number Represented as 0");
         } else {
             remarksLabel.setText("Adjusted Input: " + model.getFinalInput() + " Adjusted Exp: " + model.getFinalExponent());
         }

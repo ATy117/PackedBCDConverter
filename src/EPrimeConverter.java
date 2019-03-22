@@ -2,7 +2,7 @@ public class EPrimeConverter {
     public static String convert(int exponent){
         String tenBit = "";
         if (exponent < -101 || exponent > 90){
-            return "11000000";
+            return "00000000";
         }
         int prime = exponent + 101;
 
