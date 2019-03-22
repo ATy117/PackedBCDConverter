@@ -28,29 +28,30 @@ public class Controller {
         if(temporaryDouble == 0.0d){
             remark = "withinrange";
             process("0000000", temporaryExponent + "", remark);
+            return;
         }
         if (temporaryDouble > 0.0) {
             if (temporaryDouble > 9999999d) {
-                while (temporaryDouble > 9999999d) {
+                while (temporaryDouble > 9999999d && temporaryExponent > -101) {
                     temporaryDouble = temporaryDouble / 10.0d;
                     temporaryExponent++;
                 }
             } else if (temporaryDouble < 1000000d) {
-                while (temporaryDouble < 1000000d) {
+                while (temporaryDouble < 1000000d && temporaryExponent > -101) {
                     temporaryDouble = temporaryDouble * 10.0d;
                     temporaryExponent--;
                 }
             }
         } else if (temporaryDouble < 0.0){
             if (temporaryDouble < -9999999d){
-                while (temporaryDouble < -9999999d){
+                while (temporaryDouble < -9999999d && temporaryExponent > -101){
                     temporaryDouble = temporaryDouble / 10.0d;
-                    temporaryExponent--;
+                    temporaryExponent++;
                 }
             } else if (temporaryDouble > -1000000d){
-                while (temporaryDouble > -1000000d){
+                while (temporaryDouble > -1000000d && temporaryExponent > -101){
                     temporaryDouble = temporaryDouble * 10.0d;
-                    temporaryExponent++;
+                    temporaryExponent--;
                 }
             }
         }
@@ -58,9 +59,13 @@ public class Controller {
         if (temporaryExponent > 90 && temporaryDouble > 0){
             remark = "positiveinfinity";
             process("positiveinfinity", "positiveinfinity", remark);
-        } else if (temporaryExponent < -101 && temporaryDouble < 0){
+        } else if (temporaryExponent > 90 && temporaryDouble < 0){
             remark = "negativeinfinity";
             process("negativeinfinity", "negativeinfinity", remark);
+        } else if (temporaryExponent == -101 && ((temporaryDouble < 1 && temporaryDouble > 0) ||
+                                                (temporaryDouble > -1 && temporaryDouble < 0))) {
+            remark = "withinrange";
+            process("0000000", temporaryExponent + "", remark);
         } else {
             remark = "withinrange";
             BigDecimal bd = new BigDecimal(temporaryDouble);
@@ -129,12 +134,28 @@ public class Controller {
                 wholeNumber = wholeNumber * -1;
             }
 
-            int MSD = wholeNumber / 1000000;
 
-            String MSDbits = FourBitConverter.convert(MSD);
+            String finalInput1 = wholeNumber + "";
+            if(wholeNumber == 0){
+                finalInput1 = "0000000";
+            }
+
+            String padding = "";
+            if (finalInput1.length() < 7){
+                while(padding.length() != (7-finalInput1.length())){
+                    padding = padding.concat("0");
+                }
+            }
+
+            finalInput1 = padding+finalInput1;
+
+            String MSD = finalInput1.substring(0,1);
+
+
+            String MSDbits = FourBitConverter.convert(Integer.parseInt(MSD));
             String exponentBits = EPrimeConverter.convert(exponent);
 
-            if (MSD < 8){
+            if (Integer.parseInt(MSD) < 8){
                 String combi = "";
                 combi = combi + exponentBits.substring(0,2) + MSDbits.substring(1);
                 model.setCombi(combi);
@@ -146,10 +167,7 @@ public class Controller {
 
             model.setExponent(exponentBits.substring(2));
 
-            String finalInput1 = wholeNumber + "";
-            if(wholeNumber == 0){
-                finalInput1 = "0000000";
-            }
+
             String first = finalInput1.substring(1,2);
             String second = finalInput1.substring(2,3);
             String third = finalInput1.substring(3,4);
