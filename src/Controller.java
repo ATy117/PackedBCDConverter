@@ -27,7 +27,7 @@ public class Controller {
         }
         if(temporaryDouble == 0.0d){
             remark = "withinrange";
-            process("0000000", temporaryExponent + "", remark);
+            process("0000000", 0 + "", remark);
             return;
         }
         if (temporaryDouble > 0.0) {
@@ -82,10 +82,10 @@ public class Controller {
         } else if (temporaryExponent == -101 && ((temporaryDouble < 1 && temporaryDouble > 0) ||
                                                 (temporaryDouble > -1 && temporaryDouble < 0))) {
             remark = "withinrange";
-            process("0000000", temporaryExponent + "", remark);
+            process("0000000", 0 + "", remark);
         } else if (temporaryExponent < -101) {
             remark = "withinrange";
-            process("0000000", temporaryExponent + "", remark);
+            process("0000000", 0 + "", remark);
         }
         else {
             remark = "withinrange";
@@ -148,7 +148,7 @@ public class Controller {
             int wholeNumber = Integer.parseInt(finalInput);
             int exponent = Integer.parseInt(finalExponent);
 
-            if (wholeNumber > 0) {
+            if (wholeNumber >= 0) {
                 model.setSignBit(0);
             } else {
                 model.setSignBit(1);
@@ -174,7 +174,7 @@ public class Controller {
 
 
             String MSDbits = FourBitConverter.convert(Integer.parseInt(MSD));
-            String exponentBits = EPrimeConverter.convert(exponent);
+            String exponentBits = EPrimeConverter.convert(exponent, wholeNumber);
 
             if (Integer.parseInt(MSD) < 8){
                 String combi = "";
