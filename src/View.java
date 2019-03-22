@@ -74,8 +74,8 @@ public class View {
         signField.setText(model.getSignBit()+"");
         combiField.setText(model.getCombi());
         ecbField.setText(model.getExponent());
-        mcbFieldOne.setText(model.getMantissa1());
-        mcbFieldTwo.setText(model.getMantissa2());
+        mcbFieldOne.setText(model.getMantissa1().substring(0,3) + " " + model.getMantissa1().substring(3,6)+ " " + model.getMantissa1().substring(6));
+        mcbFieldTwo.setText(model.getMantissa2().substring(0,3) + " " + model.getMantissa2().substring(3,6)+ " " + model.getMantissa2().substring(6));
         finalHexLabel.setText("0x" + model.getFinalHex());
 
         if (model.getCombi().equals("11110") && model.getSignBit() == 1){
