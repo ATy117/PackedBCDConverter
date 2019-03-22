@@ -48,6 +48,8 @@ public class View {
 
         Scene scene= new Scene(root);
         stage.setScene(scene);
+        stage.setTitle("IEEE 2008 32-Bit Floating Point Converter");
+        stage.setResizable(false);
         stage.show();
     }
 
