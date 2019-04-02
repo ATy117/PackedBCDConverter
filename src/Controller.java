@@ -14,43 +14,44 @@ public class Controller {
 
     public void input(String input, String exponent){
         String remark = "normal";
-        double temporaryDouble = 0000000f;
+        BigDecimal temporaryDouble;
         int temporaryExponent = 0;
 
         try {
-            temporaryDouble = Double.parseDouble(input);
+            //temporaryDouble = Double.parseDouble(input);
+            temporaryDouble = new BigDecimal(input);
             temporaryExponent = Integer.parseInt(exponent);
         }catch (NumberFormatException e){
             remark = "nan";
             process("nan", "nan", remark);
             return;
         }
-        if(temporaryDouble == 0.0d){
+        if(temporaryDouble.compareTo(new BigDecimal(0)) == 0){
             remark = "withinrange";
             process("0000000", 0 + "", remark);
             return;
         }
-        if (temporaryDouble > 0.0) {
-            if (temporaryDouble > 9999999d) {
-                while (temporaryDouble > 9999999d && temporaryExponent > -101) {
-                    temporaryDouble = temporaryDouble / 10.0d;
+        if (temporaryDouble.compareTo(new BigDecimal(0))==1) {
+            if (temporaryDouble.compareTo(new BigDecimal(9999999)) == 1 ) {
+                while (temporaryDouble.compareTo(new BigDecimal(9999999)) == 1 && temporaryExponent > -101) {
+                    temporaryDouble = temporaryDouble.divide(new BigDecimal(10));
                     temporaryExponent++;
                 }
-            } else if (temporaryDouble < 1000000d) {
-                while (temporaryDouble < 1000000d && temporaryExponent > -101) {
-                    temporaryDouble = temporaryDouble * 10.0d;
+            } else if (temporaryDouble.compareTo(new BigDecimal(1000000)) == -1 ) {
+                while (temporaryDouble.compareTo(new BigDecimal(1000000)) == -1 && temporaryExponent > -101) {
+                    temporaryDouble = temporaryDouble.multiply(new BigDecimal(10.0));
                     temporaryExponent--;
                 }
             }
-        } else if (temporaryDouble < 0.0){
-            if (temporaryDouble < -9999999d){
-                while (temporaryDouble < -9999999d && temporaryExponent > -101){
-                    temporaryDouble = temporaryDouble / 10.0d;
+        } else if (temporaryDouble.compareTo(new BigDecimal(0.0)) == -1){
+            if (temporaryDouble.compareTo(new BigDecimal(-9999999)) == -1){
+                while (temporaryDouble.compareTo(new BigDecimal(-9999999)) == -1 && temporaryExponent > -101){
+                    temporaryDouble = temporaryDouble.divide(new BigDecimal(10));
                     temporaryExponent++;
                 }
-            } else if (temporaryDouble > -1000000d){
-                while (temporaryDouble > -1000000d && temporaryExponent > -101){
-                    temporaryDouble = temporaryDouble * 10.0d;
+            } else if (temporaryDouble.compareTo(new BigDecimal(-1000000)) == 1){
+                while (temporaryDouble.compareTo(new BigDecimal(-1000000)) == 1 && temporaryExponent > -101){
+                    temporaryDouble = temporaryDouble.multiply(new BigDecimal(10));
                     temporaryExponent--;
                 }
             }
@@ -58,33 +59,33 @@ public class Controller {
 
         if (temporaryExponent < -101){
             while (temporaryExponent < -101){
-                temporaryDouble = temporaryDouble / 10.0d;
+                temporaryDouble = temporaryDouble.divide(new BigDecimal(10.0));
                 temporaryExponent++;
             }
         }
 
-        if (temporaryDouble > 9999999d){
-            while (temporaryDouble > 9999999d) {
-                temporaryDouble = temporaryDouble / 10.0d;
+        if (temporaryDouble.compareTo(new BigDecimal(9999999)) == 1){
+            while (temporaryDouble.compareTo(new BigDecimal(9999999)) == 1) {
+                temporaryDouble = temporaryDouble.divide(new BigDecimal(10.0));
                 temporaryExponent++;
             }
         }
 
-        if (temporaryDouble < -9999999d){
-            while (temporaryDouble < -9999999d){
-                temporaryDouble = temporaryDouble / 10.0d;
+        if (temporaryDouble.compareTo(new BigDecimal(-9999999)) == -1 ){
+            while (temporaryDouble.compareTo(new BigDecimal(-9999999)) == -1 ){
+                temporaryDouble = temporaryDouble.divide(new BigDecimal(10));
                 temporaryExponent++;
             }
         }
 
-        if (temporaryExponent > 90 && temporaryDouble > 0){
+        if (temporaryExponent > 90 && temporaryDouble.compareTo(new BigDecimal(0)) == 1){
             remark = "positiveinfinity";
             process("positiveinfinity", "positiveinfinity", remark);
-        } else if (temporaryExponent > 90 && temporaryDouble < 0){
+        } else if (temporaryExponent > 90 && temporaryDouble.compareTo(new BigDecimal(0)) == -1){
             remark = "negativeinfinity";
             process("negativeinfinity", "negativeinfinity", remark);
-        } else if (temporaryExponent == -101 && ((temporaryDouble < 1 && temporaryDouble > 0) ||
-                                                (temporaryDouble > -1 && temporaryDouble < 0))) {
+        } else if (temporaryExponent == -101 && ((temporaryDouble.compareTo(new BigDecimal(1)) == -1 && temporaryDouble.compareTo(new BigDecimal(0))== 1) ||
+                                                (temporaryDouble.compareTo(new BigDecimal(-1)) == 1 && temporaryDouble.compareTo(new BigDecimal(0)) == -1))) {
             remark = "withinrange";
             process("0000000", 0 + "", remark);
         } else if (temporaryExponent < -101) {
@@ -93,10 +94,10 @@ public class Controller {
         }
         else {
             remark = "withinrange";
-            BigDecimal bd = new BigDecimal(temporaryDouble);
-            bd = bd.setScale(0, RoundingMode.HALF_EVEN);
-            double finalDouble = bd.doubleValue();
-            int finalInt = (int) finalDouble;
+            //BigDecimal bd = new BigDecimal(temporaryDouble);
+            temporaryDouble = temporaryDouble.setScale(0, RoundingMode.HALF_EVEN);
+            //double finalDouble = bd.doubleValue();
+            int finalInt = temporaryDouble.intValue();
             process(finalInt+ "", temporaryExponent + "", remark);
         }
 
@@ -107,8 +108,8 @@ public class Controller {
             model.setSignBit(0);
             model.setCombi("11111");
             model.setExponent("010101");
-            model.setMantissa1("0101010101");
-            model.setMantissa2("0101010101");
+            model.setMantissa1("0000000000");
+            model.setMantissa2("0000000000");
             String finalHex = Hex32Converter.convert(model.getSignBit() +
                     model.getCombi() +
                     model.getExponent() +
